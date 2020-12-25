@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class PasswordGenerator{
 
-    public static String generatePassword(long inputSeed, int length) {
+    public static String generatePassword(int length) {
         // Creation of the first Randomizer, to randomize the randomizer for the password
         Random random = new Random();
 

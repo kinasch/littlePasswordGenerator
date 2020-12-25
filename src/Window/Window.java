@@ -13,22 +13,17 @@ public class Window{
 
     private JFrame mainFrame = new JFrame("Generator");
 
-    private JLabel seedDescription = new JLabel("Seed for Random Generation (Number): ");
     private JLabel numberOfSigns = new JLabel("Number of Characters: ");
     private JTextField passwordText = new JTextField("Password",22); //TODO: Generate password upon button press
-
-    private JTextField seedInput = new JTextField("",25);
 
     private JComboBox numberOfCharsInput = new JComboBox();
 
     private JButton generate_Button = new JButton("Generate");
 
-    private JPanel seedPanel = new JPanel();
     private JPanel lengthPanel = new JPanel();
     private JPanel passwordPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
 
-    private long seed;
     private int pwlength = 10;
 
     /**
@@ -66,19 +61,6 @@ public class Window{
             }
         });
 
-        seedInput.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke) {
-                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
-                    seedInput.setEditable(true);
-                } else {
-                    seedInput.setEditable(false);
-                }
-            }
-        });
-
-        seedPanel.add(seedDescription);
-        seedPanel.add(seedInput);
-
         lengthPanel.add(numberOfCharsInput);
         lengthPanel.add(numberOfSigns);
 
@@ -86,7 +68,6 @@ public class Window{
 
         buttonPanel.add(generate_Button);
 
-        mainFrame.getContentPane().add(seedPanel);
         mainFrame.getContentPane().add(lengthPanel);
         mainFrame.getContentPane().add(passwordPanel);
         mainFrame.getContentPane().add(buttonPanel);
@@ -103,7 +84,7 @@ public class Window{
     private void generateButtonPressed(){
         generate_Button.setEnabled(false);
         String password;
-        password = PasswordGenerator.generatePassword(seed,pwlength);
+        password = PasswordGenerator.generatePassword(pwlength);
         passwordText.setText(password);
         System.out.println(password);
         generate_Button.setEnabled(true);
