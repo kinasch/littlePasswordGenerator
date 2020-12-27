@@ -11,9 +11,9 @@ public class PasswordGenerator{
         String pw = "";
         for (int i = 0; i < length; i++) {
             Random rdm = new Random(random.nextLong());
-            char c = (char) (rdm.nextInt(106) + 21);
+            char c = (char) (rdm.nextInt(95) + 32);
             while (c == '`' || c == '´' || c == ' ' || pw.indexOf(Character.toString(c))!=-1) {
-                c = (char) (rdm.nextInt(106) + 21);
+                c = (char) (rdm.nextInt(95) + 32);
             }
             pw += Character.toString(c);
         }
